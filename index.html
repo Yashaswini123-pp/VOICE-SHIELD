@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Voice Shield</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                🛡️
+                <span>VOICE SHIELD</span>
+            </div>
+
+            <p class="tagline">
+                AI Voice Impersonation Protection
+            </p>
+
+            <nav>
+
+                <button class="nav-item active">
+                    🏠 Dashboard
+                </button>
+
+                <button class="nav-item">
+                    🎙️ Voice Analysis
+                </button>
+
+                <button class="nav-item">
+                    🚨 Threats
+                </button>
+
+                <button class="nav-item">
+                    📊 Security History
+                </button>
+
+            </nav>
+
+            <div class="system-status">
+
+                <span class="status-dot"></span>
+
+                System Online
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="main">
+
+            <header class="topbar">
+
+                <div>
+
+                    <h1>Security Dashboard</h1>
+
+                    <p>
+                        Real-time protection against voice cloning
+                        impersonation attacks.
+                    </p>
+
+                </div>
+
+                <div class="profile">
+                    👤
+                    <span>Admin</span>
+                </div>
+
+            </header>
+
+
+            <!-- STATISTICS -->
+
+            <section class="stats">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">📞</div>
+
+                    <div>
+                        <h3>1,248</h3>
+                        <p>Calls Analyzed</p>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon warning">⚠️</div>
+
+                    <div>
+                        <h3>87</h3>
+                        <p>Threats Detected</p>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon danger">🚨</div>
+
+                    <div>
+                        <h3>14</h3>
+                        <p>Critical Incidents</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- MAIN ANALYSIS CARD -->
+
+            <section class="analysis-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>🎙️ Voice Protection</h2>
+
+                        <p>
+                            Analyze an incoming voice for
+                            impersonation threats.
+                        </p>
+
+                    </div>
+
+                    <span class="ready">
+                        ● READY
+                    </span>
+
+                </div>
+
+
+                <div class="upload-area">
+
+                    <div class="microphone">
+                        🎙️
+                    </div>
+
+                    <h3>Analyze Voice</h3>
+
+                    <p>
+                        Upload a voice recording or start
+                        live monitoring.
+                    </p>
+
+
+                    <div class="buttons">
+
+                        <label class="primary-btn">
+
+                            📁 Upload Audio
+
+                            <input
+                                type="file"
+                                id="audioFile"
+                                accept="audio/*"
+                                hidden
+                            >
+
+                        </label>
+
+
+                        <button
+                            class="secondary-btn"
+                            id="liveBtn"
+                        >
+
+                            🎙️ Start Live Monitoring
+
+                        </button>
+
+                    </div>
+
+                    <p id="fileName" class="file-name"></p>
+                    <div class="live-status" id="liveStatus">
+
+    <div class="live-status-header">
+        <span class="live-dot"></span>
+        <strong>LIVE MONITORING</strong>
+    </div>
+
+    <div class="live-status-content">
+        <span>🎙️ Microphone</span>
+        <strong id="micStatus">ACTIVE</strong>
+        </div>
+        
+    <div class="live-status-content">
+    <span>🟢 Voice Stream</span>
+    <strong>ACTIVE</strong>
+    </div>
+    <div id="analysisStatus" style="margin-top:12px; padding:10px; background:#f0fdf4; border-radius:8px; font-size:12px; color:#027a48;">
+    🟢 Analyzing Voice Stream...
+</div>
+
+    <div class="live-status-content">
+        <span>⏱️ Monitoring Time</span>
+        <strong id="monitorTime">00:00</strong>
+        <div id="waveform" style="margin-top:15px; height:50px; display:flex; align-items:center; justify-content:center; gap:3px;">
+    
+    <span class="wave-bar"></span>
+    <span class="wave-bar"></span>
+    <span class="wave-bar"></span>
+    <span class="wave-bar"></span>
+    <span class="wave-bar"></span>
+    <span class="wave-bar"></span>
+    <span class="wave-bar"></span>
+    <span class="wave-bar"></span>
+    <span class="wave-bar"></span>
+    <span class="wave-bar"></span>
+
+</div>
+    </div>
+
+</div>
+                    <button class="analyze-btn" id="analyzeBtn">
+    🔍 Analyze Voice
+</button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ANALYSIS RESULT -->
+
+            <section
+                class="result-card"
+                id="resultCard"
+            >
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>🔍 Voice Analysis</h2>
+
+                        <p>
+                            Current voice security assessment
+                        </p>
+
+                    </div>
+
+                    <span
+                        class="risk critical"
+                        id="riskLevel"
+                    >
+                        CRITICAL
+                    </span>
+
+                </div>
+
+
+                <div class="results">
+
+                    <div class="result-item">
+
+                        <div class="result-title">
+
+                            <span>
+                                AI Voice Detection
+                            </span>
+
+                            <strong id="aiScore">
+                                94%
+                            </strong>
+
+                        </div>
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar ai"
+                                id="aiBar"
+                            ></div>
+
+                        </div>
+
+                        <small>
+                            Synthetic voice likelihood
+                        </small>
+
+                    </div>
+
+
+                    <div class="result-item">
+
+                        <div class="result-title">
+
+                            <span>
+                                Speaker Verification
+                            </span>
+
+                            <strong id="speakerScore">
+                                27%
+                            </strong>
+
+                        </div>
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar speaker"
+                                id="speakerBar"
+                            ></div>
+
+                        </div>
+
+                        <small>
+                            Match with registered speaker
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- THREATS -->
+
+                <div class="threat-section">
+
+                    <h3>
+                        Detected Indicators
+                    </h3>
+
+                    <div class="threat">
+
+                        ✓ Possible synthetic speech indicators
+
+                    </div>
+
+                    <div class="threat">
+
+                        ✓ Speaker identity mismatch
+
+                    </div>
+
+                    <div class="threat">
+
+                        ✓ Possible impersonation attempt
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTION -->
+
+                <div class="action-box">
+
+                    <div>
+
+                        <h3>
+                            🛡️ Recommended Action
+                        </h3>
+
+                        <p>
+                            Secondary identity verification
+                            is required before authorizing
+                            sensitive actions.
+                        </p>
+
+                    </div>
+
+                    <div class="action-buttons">
+
+                        <button class="verify-btn">
+                            🔐 Verify Identity
+                        </button>
+
+                        <button class="block-btn">
+                            🚫 Block & Report
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- RECENT THREATS -->
+
+            <section class="history-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>Recent Security Events</h2>
+
+                        <p>
+                            Latest detected voice threats
+                        </p>
+
+                    </div>
+
+                    <button class="view-btn">
+                        View All
+                    </button>
+
+                </div>
+
+
+                <div class="table">
+
+                    <div class="table-row header">
+
+                        <span>Caller</span>
+                        <span>Threat</span>
+                        <span>Risk</span>
+                        <span>Status</span>
+
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <span>Unknown</span>
+
+                        <span>
+                            AI Voice Impersonation
+                        </span>
+
+                        <span class="high">
+                            94%
+                        </span>
+
+                        <span class="blocked">
+                            Blocked
+                        </span>
+
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <span>Rahul</span>
+
+                        <span>
+                            No Threat
+                        </span>
+
+                        <span class="low">
+                            8%
+                        </span>
+
+                        <span class="safe">
+                            Verified
+                        </span>
+
+                    </div>
+
+
+                    <div class="table-row">
+
+                        <span>Unknown</span>
+
+                        <span>
+                            Speaker Mismatch
+                        </span>
+
+                        <span class="medium">
+                            73%
+                        </span>
+
+                        <span class="review">
+                            Review
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+        <!-- THREAT ALERT SCREEN -->
+
+<section class="threat-alert" id="threatAlert">
+    <div style="font-size:11px; font-weight:bold; color:#b42318; margin-bottom:8px;">
+    🚨 SECURITY INCIDENT DETECTED
+</div>
+
+    <div class="alert-header">
+
+        <div class="alert-icon">
+            🚨
+        </div>
+
+        <div>
+            <h2>Voice Impersonation Detected</h2>
+
+            <p>
+                The current voice interaction presents
+                a high impersonation risk.
+            </p>
+        </div>
+
+        <span class="critical-badge">
+            CRITICAL RISK
+        </span>
+
+    </div>
+
+
+    <div class="alert-grid">
+
+        <!-- CALLER INFORMATION -->
+
+        <div class="alert-panel">
+
+            <h3>👤 Caller Assessment</h3>
+
+            <div class="info-row">
+                <span>Claimed Identity</span>
+                <strong>Manager</strong>
+            </div>
+
+            <div class="info-row">
+                <span>Speaker Match</span>
+                <strong class="danger-text">27%</strong>
+            </div>
+
+            <div class="info-row">
+                <span>AI Voice Likelihood</span>
+                <strong class="danger-text">94%</strong>
+            </div>
+
+            <div class="info-row">
+                <span>Threat Level</span>
+                <strong class="danger-text">CRITICAL</strong>
+            </div>
+
+        </div>
+
+
+        <!-- WHY FLAGGED -->
+
+        <div class="alert-panel">
+
+            <h3>🔍 Why Was This Flagged?</h3>
+
+            <div class="reason">
+                ✓ Synthetic speech indicators
+            </div>
+
+            <div class="reason">
+                ✓ Speaker identity mismatch
+            </div>
+
+            <div class="reason">
+                ✓ Possible impersonation attempt
+            </div>
+
+            <div class="reason">
+                ✓ High-risk voice interaction
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PREVENTION -->
+
+    <div class="prevention-box">
+
+        <div>
+
+            <h3>🛡️ Preventive Action</h3>
+
+            <p>
+                Do not authorize sensitive actions until
+                the caller's identity has been independently
+                verified.
+            </p>
+
+        </div>
+
+        <div class="prevention-actions">
+
+            <button class="verify-large">
+                🔐 Verify Identity
+            </button>
+
+            <button class="block-large">
+                🚫 Block & Report
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="security-message">
+
+        🔒
+        <strong>Security Recommendation:</strong>
+
+        Use secondary authentication such as OTP,
+        trusted-contact confirmation, or another
+        independent verification method.
+
+    </div>
+
+</section>
+
+    </div>
+
+
+    <script src="script.js"></script>
+    
+<!-- VERIFICATION MODAL -->
+
+<div class="modal-overlay" id="verificationModal">
+
+    <div class="modal">
+
+        <button class="close-modal" id="closeVerification">
+            ×
+        </button>
+
+        <div class="modal-icon">
+            🔐
+        </div>
+
+        <h2>Secondary Identity Verification</h2>
+
+        <p>
+            A high-risk voice interaction has been detected.
+            Verify the caller before authorizing any sensitive action.
+        </p>
+
+        <div class="verification-options">
+
+            <button class="verification-option" id="otpBtn">
+                📱
+                <span>
+                    <strong>Send OTP</strong>
+                    <small>Verify through registered mobile</small>
+                </span>
+            </button>
+
+            <button class="verification-option" id="contactBtn">
+                👥
+                <span>
+                    <strong>Trusted Contact</strong>
+                    <small>Confirm the caller independently</small>
+                </span>
+            </button>
+
+            <button class="verification-option" id="deviceBtn">
+                💻
+                <span>
+                    <strong>Registered Device</strong>
+                    <small>Confirm through trusted device</small>
+                </span>
+            </button>
+
+        </div>
+
+        <div class="verification-status" id="verificationStatus">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BLOCK REPORT MODAL -->
+
+<div class="modal-overlay" id="blockModal">
+
+    <div class="modal">
+
+        <button class="close-modal" id="closeBlock">
+            ×
+        </button>
+
+        <div class="modal-icon danger-icon">
+            🚨
+        </div>
+
+        <h2>Call Blocked & Reported</h2>
+
+        <p>
+            The suspected impersonation attempt has been
+            blocked and recorded as a security incident.
+        </p>
+
+        <div class="incident-box">
+
+            <div>
+                <span>Incident ID</span>
+                <strong>VS-2026-0920-001</strong>
+            </div>
+
+            <div>
+                <span>Threat Level</span>
+                <strong class="danger-text">CRITICAL</strong>
+            </div>
+
+            <div>
+                <span>Status</span>
+                <strong class="blocked-text">
+                    BLOCKED
+                </strong>
+            </div>
+
+        </div>
+
+        <div class="success-message">
+
+            ✓ Call blocked<br>
+            ✓ Security incident logged<br>
+            ✓ Alert generated
+
+        </div>
+
+        <button class="done-btn" id="doneBlock">
+            Done
+        </button>
+
+    </div>
+
+</div>
+</body>
+</html>
